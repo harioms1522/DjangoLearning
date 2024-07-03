@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 message_mappings = {
     "january": "Go to gym daily!",
-    "feburary": "Hi there its fab and holiday"
+    "feburary": "Hi there its fab and holiday",
+    "march": None
 }
 
 # Get all the values in this dict in an array
@@ -15,19 +17,29 @@ message_arr = list(message_mappings.values())
 #     return  HttpResponse(message_mappings[month]) if (message_mappings.get(month) != None) else HttpResponseNotFound("This Month is not supported!") 
 
 def index(request):
-    html = "<ul>"
-    for item in list(message_mappings.items()):
-        print(item)
-        redirect_url = reverse("monthly-challange", args=[item[0]])
-        html += f"<a href={redirect_url} blank ><li>{item[0]}</li> </a>"
-    html += "</ul>"
-    return HttpResponse(html)
+    # html = "<ul>"
+    # for item in list(message_mappings.items()):
+    #     print(item)
+    #     redirect_url = reverse("monthly-challange", args=[item[0]])
+    #     html += f"<a href={redirect_url} blank ><li>{item[0]}</li> </a>"
+    # html += "</ul>"
+    # return HttpResponse(html)
+
+    return render(request, "challenges/index.html", {"months": list(message_mappings.keys())})
 
 
 def monthly_challenge(request, month):
-    print(month)
     try:
-        return HttpResponse(message_mappings[month])
+        # return HttpResponse(message_mappings[month])
+        # response_data = render_to_string("challenges/challange.html")
+        # return HttpResponse(response_data)
+
+        # We can use directly render
+        challange = message_mappings[month]
+        return render(request, "challenges/challange.html", {
+            "month": month,
+            "challange": challange
+        })
     except: 
         return HttpResponseNotFound("<h1>This Month is not supported!</h1>")
 
