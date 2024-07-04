@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block style %}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 80%;
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      font-size: 36px;
+      color: #333;
+    }
+    
+    p {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+{% endblock style %}
+{% block page_title %}
+    Something went wrong! Please try again.
+{% endblock page_title %}
+{% block content %}
+    {% include "challenges/includes/navbar.html" %}
+    <div class="container">
+        <h1>404 - Page Not Found</h1>
+        <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <p>Go back to <a href="{% url "home-page" %}">Homepage</a>.</p>
+    </div>
+{% endblock content %}
