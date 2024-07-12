@@ -6,7 +6,8 @@ from django.template.loader import render_to_string
 message_mappings = {
     "january": "Go to gym daily!",
     "feburary": "Hi there its fab and holiday",
-    "march": None
+    "march": None,
+    "april": "Complete django in the first 2 weeks!"
 }
 
 # Get all the values in this dict in an array

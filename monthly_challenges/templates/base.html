@@ -9,10 +9,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
         <link rel="stylesheet"  href = {% static "challenges/navbar.css" %}>
+        <link rel="stylesheet" href={% static "styles.css" %}>
+        {% block stylesheets %}{% endblock stylesheets %}
         <style>
             {% block style %}{% endblock style %}
             {% comment %} All the stylesheets that are must should be aaded here {% endcomment %}
         </style>
+        {% comment %} To add some css files dynamically {% endcomment %}
     </head>
     <body>
         {% block content %}{% endblock  %}
