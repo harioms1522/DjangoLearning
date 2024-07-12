@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Welcome {% endblock title %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "blog/navbar.css" %}">
+{% endblock stylesheets %}
+{% block body %}
+    {% include "blog/navbar.html" %}
+    {% lorem 3 w random %}
+{% endblock body %}

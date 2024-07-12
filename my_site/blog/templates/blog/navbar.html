@@ -1,0 +1,16 @@
+{% load static %}
+<nav class="navbar">
+    <div class="container">
+        <a href="{% url "starting-page" %}" class="logo">Hariom's Blog</a>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><i class="fa-solid fa-house"></i><a href="{% url "starting-page" %}">Home</a></li>
+            <li><a href="#">Posts</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<script src="{% static "blog/javascript/navbar.js" %}"></script>
