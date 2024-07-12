@@ -1,10 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Welcome {% endblock title %}
+{% block title %} Hariom's Blog {% endblock title %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{% static "blog/navbar.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/navbar.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/hero.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/top-blogs.css" %}">
 {% endblock stylesheets %}
 {% block body %}
     {% include "blog/navbar.html" %}
-    {% lorem 3 w random %}
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Computer Science Blog</h1>
+            <p>Explore insightful articles, tutorials, and resources on various topics in computer science.</p>
+            <a href="{% url "posts-page" %}" class="btn">Find More</a>
+        </div>
+    </section>
+    <section class="top-blogs">
+        {% for blog in blogs %}
+            <div class="blog-tile">
+                <img src="{% static "blog/images/hero.jpg" %}" alt="Blog 1 Image">
+                <a href="{% url "single-post" slug=blog.slug %}">
+                    <div class="blog-info">
+                        <h2>{{ blog.title }}</h2>
+                        <p>{{ blog.description }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </section>
 {% endblock body %}

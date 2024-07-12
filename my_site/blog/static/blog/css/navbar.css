@@ -1,0 +1,105 @@
+.navbar {
+    background: #f0f0f0; /* Light background */
+    color: #333; /* Dark text color */
+    padding: 15px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #333; /* Dark text color */
+}
+
+.menu-toggle {
+    display: none; /* Hide by default */
+    cursor: pointer;
+}
+
+.menu-toggle i {
+    font-size: 1.6rem;
+    color: #333; /* Dark text color */
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end; /* Right align on desktop */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li:first-child {
+    margin-left: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333; /* Dark text color */
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: #f8b400; /* Accent color on hover */
+    color: #fff; /* Light text color */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+        display: block; /* Show on mobile */
+    }
+
+    .nav-links {
+        display: none; /* Hide by default on mobile */
+        position: absolute;
+        top: 60px; /* Adjust according to navbar height */
+        right: 0;
+        background-color: #f0f0f0; /* Light background */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        width: 100%;
+        flex-direction: column; /* Horizontal layout */
+        justify-content: flex-end; /* Right align */
+        z-index: 1;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active (toggled) */
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 0;
+    }
+
+    .nav-links li a {
+        width: auto;
+        padding: 10px 15px;
+        border-bottom: none; /* Remove separator */
+    }
+}

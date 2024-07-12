@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Hariom's Blog {% endblock title %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "blog/css/navbar.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/single-blog.css" %}">
+{% endblock stylesheets %}
+{% block body %}
+    {% include "blog/navbar.html" %}
+    <main class="content">
+        <article class="blog-post">
+            <header class="blog-post-header">
+                <h2 class="blog-post-title">{{blog.title | title}}</h2>
+                <p class="blog-post-meta">Published on July 13, 2024 by Admin</p>
+            </header>
+            <div class="blog-post-content">
+                <img src="{% static "blog/images/hero.jpg" %}" alt="Blog Post Image">
+                {{blog.content}}
+            </div>
+        </article>
+    </main>
+{% endblock body %}
