@@ -10,22 +10,14 @@
     {% include "blog/navbar.html" %}
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to Our Computer Science Blog</h1>
+            <h1>Welcome to the world of tech..</h1>
             <p>Explore insightful articles, tutorials, and resources on various topics in computer science.</p>
             <a href="{% url "posts-page" %}" class="btn">Find More</a>
         </div>
     </section>
     <section class="top-blogs">
         {% for blog in blogs %}
-            <div class="blog-tile">
-                <img src="{% static "blog/images/hero.jpg" %}" alt="Blog 1 Image">
-                <a href="{% url "single-post" slug=blog.slug %}">
-                    <div class="blog-info">
-                        <h2>{{ blog.title }}</h2>
-                        <p>{{ blog.description }}</p>
-                    </div>
-                </a>
-            </div>
+            {% include "blog/partials/blog-info-card.html" with blog=blog %}
         {% endfor %}
     </section>
 {% endblock body %}

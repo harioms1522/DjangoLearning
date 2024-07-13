@@ -11,10 +11,10 @@
         <article class="blog-post">
             <header class="blog-post-header">
                 <h2 class="blog-post-title">{{blog.title | title}}</h2>
-                <p class="blog-post-meta">Published on July 13, 2024 by Admin</p>
+                <p class="blog-post-meta">Published on {{ blog.date }} by {{ blog.author | title }}</p>
             </header>
             <div class="blog-post-content">
-                <img src="{% static "blog/images/hero.jpg" %}" alt="Blog Post Image">
+                <img src="{% static "blog/images/"|add:blog.image %}" alt="Blog Post Image">
                 {{blog.content}}
             </div>
         </article>
