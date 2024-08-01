@@ -5,13 +5,40 @@
     <link rel="stylesheet" href="{% static "blog/css/navbar.css" %}">
     <link rel="stylesheet" href="{% static "blog/css/single-blog.css" %}">
 {% endblock stylesheets %}
+{% block style %}
+    .tags-container {
+        margin-top: 10px;
+    }
+
+    .tag {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
+        font-size: 0.9em;
+        color: #fff;
+        background-color: #007bff;
+        border-radius: 20px;
+        text-transform: capitalize;
+    }
+
+    .tag:hover {
+        background-color: #0056b3;
+    }
+{% endblock style %}
 {% block body %}
     {% include "blog/navbar.html" %}
     <main class="content">
         <article class="blog-post">
             <header class="blog-post-header">
-                <h2 class="blog-post-title">{{blog.title | title}}</h2>
-                <p class="blog-post-meta">Published on {{ blog.date }} by {{ blog.author | title }}</p>
+                <div>
+                    <h2 class="blog-post-title">{{blog.title | title}}</h2>
+                    <p class="blog-post-meta">Published on {{ blog.date }} by {{ blog.author | title }}</p>
+                </div>
+                <div class="tags-container">    
+                    {% for tag in blog.tags.all %}
+                        <span class="tag">{{tag}}</span>
+                    {% endfor %}
+                </div>
             </header>
             <div class="blog-post-content">
                 <img src="{% static "blog/images/"|add:blog.image %}" alt="Blog Post Image">

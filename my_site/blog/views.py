@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import datetime
+from .models import Post
 
 blogs = [
         {
@@ -160,26 +161,29 @@ blogs = [
 ]
 
 def starting_page(request):
-    try:
+    # try:
         # return HttpResponse("hi")
-        return render(request, "blog/index.html", {"blogs": blogs[-4:]})
-    except:
-        raise Http404()
+        posts = Post.objects.order_by('-date')[:4]
+        return render(request, "blog/index.html", {"blogs": posts})
+    # except:
+    #     print("hi")
+    #     raise Http404()
 
 def all_posts(request):
     try:
         # return HttpResponse("hi")
+        blogs = Post.objects.all()
         return render(request, "blog/all-blogs.html", {"blogs": blogs})
     except:
         raise Http404()
 
 def post_details(request, slug):
-    try:
-        blog = next((blog for blog in blogs if blog.get("slug") == slug), None)
+    # try:
+        blog = Post.objects.get(slug=slug)
         if blog is not None:
             return render(request, "blog/single-blog.html", {"blog": blog})
         else: 
             # return HttpResponse("sssssssssssssssss")
             raise Http404()
-    except:
-        raise Http404()
+    # except:
+    #     raise Http404()

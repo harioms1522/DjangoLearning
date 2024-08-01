@@ -42,8 +42,8 @@
     <img src="{% static "blog/images/"|add:blog.image %}" alt="Blog 1 Image">
     <a href="{% url "single-post" slug=blog.slug %}">
         <div class="blog-info">
-            <h2>{{ blog.title }}</h2>
-            <p>{{ blog.description }}</p>
+            <h2>{{ blog.title }}</h2><span>By {{blog.author}} on {{blog.date}}</span>
+            <p>{{ blog.excerpts }}</p>
         </div>
     </a>
 </div>
